@@ -1,0 +1,518 @@
+.content{
+
+margin-top: 100px;
+
+}
+
+body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background-color: #c7c7c7;
+    background-repeat: no-repeat
+}
+
+.card0 {
+    box-shadow: 0px 4px 8px 0px #757575;
+    border-radius: 0px
+}
+
+.card2 {
+    margin: 0px 40px
+}
+
+.logo {
+    width: 200px;
+    height: 100px;
+    margin-top: 20px;
+    margin-left: 35px
+}
+
+.image {
+    width: 360px;
+    height: 280px
+}
+
+.border-line {
+    border-right: 1px solid #EEEEEE
+}
+
+.facebook {
+    background-color: #3b5998;
+    color: #fff;
+    font-size: 18px;
+    padding-top: 5px;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer
+}
+
+.twitter {
+    background-color: #1DA1F2;
+    color: #fff;
+    font-size: 18px;
+    padding-top: 5px;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer
+}
+
+.linkedin {
+    background-color: #2867B2;
+    color: #fff;
+    font-size: 18px;
+    padding-top: 5px;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer
+}
+
+.line {
+    height: 1px;
+    width: 45%;
+    background-color: #E0E0E0;
+    margin-top: 10px
+}
+
+.or {
+    width: 10%;
+    font-weight: bold
+}
+
+.text-sm {
+    font-size: 14px !important
+}
+
+::placeholder {
+    color: #BDBDBD;
+    opacity: 1;
+    font-weight: 300
+}
+
+:-ms-input-placeholder {
+    color: #BDBDBD;
+    font-weight: 300
+}
+
+::-ms-input-placeholder {
+    color: #BDBDBD;
+    font-weight: 300
+}
+
+input,
+textarea {
+    padding: 10px 12px 10px 12px;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2C3E50;
+    font-size: 14px;
+    letter-spacing: 1px
+}
+
+input:focus,
+textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    /* border: 1px solid #304FFE; */
+    outline-width: 0
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0
+}
+
+a {
+    color: inherit;
+    cursor: pointer
+}
+
+
+
+.btn-green:hover {
+    background-color: #01ca0b;
+    color: #fff;
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transition: transform .8s; /* Animation */
+
+    cursor: pointer
+}
+@media screen and (max-width: 991px) {
+    .logo {
+        margin-left: 0px
+    }
+
+    .image {
+        width: 300px;
+        height: 220px
+    }
+
+    .border-line {
+        border-right: none
+    }
+
+    .card2 {
+        border-top: 1px solid #EEEEEE !important;
+        margin: 0px 15px
+    }
+    
+
+   
+}
+
+
+/* Custom css */
+.terms{
+    font-size: 13px;
+}
+
+
+.login-box{
+margin-left: 2px;
+
+}
+
+.cc-selector input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+.visa{background-image:url(http://i.imgur.com/lXzJ1eB.png);}
+.mastercard{background-image:url(http://i.imgur.com/SJbRQF7.png);}
+
+.cc-selector input:active +.drinkcard-cc{opacity: .9;}
+.cc-selector input:checked +.drinkcard-cc{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+.drinkcard-cc{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:100px;height:70px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+       -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+            filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.drinkcard-cc:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+/* Extras */
+a:visited{color:#888}
+a{color:#444;text-decoration:none;}
+p{margin-bottom:.3em;}
+
+
+.businessTypeHeading{
+    color:#f4af0c;
+}
+
+
+/* submit button */
+.MuiButton-root:hover{
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transition: transform .8s; /* Animation */
+    /* box-shadow: 10px 10px; */
+
+}
+
+.MuiButton-label:hover{
+  
+
+    color: #f4af0c;
+}
+
+.MuiSvgIcon-root{
+    font-size: 20px;
+cursor: pointer;
+}
+
+
+.MuiSvgIcon-root:hover{
+    color: #f4af0c;
+}
+/* radio */
+
+form {
+    height: 350px; 
+    overflow-y: auto; 
+    overflow-x: hidden;
+    width: 400px;
+    position: relative;
+    margin: 50px auto 0;
+    font-size: 15px;
+  }
+  
+
+  
+  .radiobtn {
+    width: 224px;
+    margin-left: 110px;
+    position: relative;
+    display: block;
+  }
+
+
+  
+  .radiobtn2 {
+    width: 180px;
+    position: relative;
+    display: block;
+  }
+
+
+
+  hr{
+    /* background-color: rgb(80, 67, 67); */
+    border-top: 1px solid #f4af0c;
+    
+    }
+  .radiobtn label {
+    display: block;
+    /* background: #fee8c3; */
+    background: #ffffff;
+    color: #444;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: 2px solid #000000;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  .radiobtn label:after, .radiobtn label:before {
+    content: "";
+    position: absolute;
+    right: 11px;
+    top: 11px;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    background: #fdcb77;
+  }
+  .radiobtn label:before {
+    background: transparent;
+    transition: 0.1s width cubic-bezier(0.075, 0.82, 0.165, 1) 0s, 0.3s height cubic-bezier(0.075, 0.82, 0.165, 2) 0.1s;
+    z-index: 2;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: 13px;
+    background-position: center;
+    width: 0;
+    height: 0;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNS4zIDEzLjIiPiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE0LjcuOGwtLjQtLjRhMS43IDEuNyAwIDAgMC0yLjMuMUw1LjIgOC4yIDMgNi40YTEuNyAxLjcgMCAwIDAtMi4zLjFMLjQgN2ExLjcgMS43IDAgMCAwIC4xIDIuM2wzLjggMy41YTEuNyAxLjcgMCAwIDAgMi40LS4xTDE1IDMuMWExLjcgMS43IDAgMCAwLS4yLTIuM3oiIGRhdGEtbmFtZT0iUGZhZCA0Ii8+PC9zdmc+);
+  }
+  .radiobtn input[type=radio] {
+    display: none;
+    position: absolute;
+    width: 100%;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+  }
+  .radiobtn input[type=radio]:checked + label {
+    background: #f4af0c;
+    -webkit-animation-name: blink;
+            animation-name: blink;
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+    border-color: #fcae2c;
+  }
+  .radiobtn input[type=radio]:checked + label:after {
+    background: #fcae2c;
+  }
+  .radiobtn input[type=radio]:checked + label:before {
+    width: 20px;
+    height: 20px;
+  }
+  
+
+  
+  .radiobtn2 {
+    width: 120px;
+    position: relative;
+    display: block;
+  }
+
+
+
+  hr{
+    /* background-color: rgb(80, 67, 67); */
+    border-top: 1px solid #f4af0c;
+    
+    }
+  .radiobtn2 label {
+    display: block;
+    /* background: #fee8c3; */
+    background: #ffffff;
+    color: #444;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: 2px solid #000000;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  .radiobtn2 label:after, .radiobtn2 label:before {
+    content: "";
+    position: absolute;
+    right: 11px;
+    top: 11px;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    background: #fdcb77;
+  }
+  .radiobtn2 label:before {
+    background: transparent;
+    transition: 0.1s width cubic-bezier(0.075, 0.82, 0.165, 1) 0s, 0.3s height cubic-bezier(0.075, 0.82, 0.165, 2) 0.1s;
+    z-index: 2;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: 13px;
+    background-position: center;
+    width: 0;
+    height: 0;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNS4zIDEzLjIiPiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE0LjcuOGwtLjQtLjRhMS43IDEuNyAwIDAgMC0yLjMuMUw1LjIgOC4yIDMgNi40YTEuNyAxLjcgMCAwIDAtMi4zLjFMLjQgN2ExLjcgMS43IDAgMCAwIC4xIDIuM2wzLjggMy41YTEuNyAxLjcgMCAwIDAgMi40LS4xTDE1IDMuMWExLjcgMS43IDAgMCAwLS4yLTIuM3oiIGRhdGEtbmFtZT0iUGZhZCA0Ii8+PC9zdmc+);
+  }
+  .radiobtn2 input[type=radio] {
+    display: none;
+    position: absolute;
+    width: 100%;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+  }
+  .radiobtn2 input[type=radio]:checked + label {
+    background: #f4af0c;
+    -webkit-animation-name: blink;
+            animation-name: blink;
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+    border-color: #fcae2c;
+  }
+  .radiobtn2 input[type=radio]:checked + label:after {
+    background: #fcae2c;
+  }
+  .radiobtn2 input[type=radio]:checked + label:before {
+    width: 20px;
+    height: 20px;
+  }
+  
+  @-webkit-keyframes blink {
+    0% {
+      background-color: #fdcb77;
+    }
+    10% {
+      background-color: #fdcb77;
+    }
+    11% {
+      background-color: #fdd591;
+    }
+    29% {
+      background-color: #fdd591;
+    }
+    30% {
+      background-color: #fdcb77;
+    }
+    50% {
+      background-color: #fdd591;
+    }
+    45% {
+      background-color: #fdcb77;
+    }
+    50% {
+      background-color: #fdd591;
+    }
+    100% {
+      background-color: #fdcb77;
+    }
+  }
+  
+  @keyframes blink {
+    0% {
+      background-color: #fdcb77;
+    }
+    10% {
+      background-color: #fdcb77;
+    }
+    11% {
+      background-color: #fdd591;
+    }
+    29% {
+      background-color: #fdd591;
+    }
+    30% {
+      background-color: #fdcb77;
+    }
+    50% {
+      background-color: #fdd591;
+    }
+    45% {
+      background-color: #fdcb77;
+    }
+    50% {
+      background-color: #fdd591;
+    }
+    100% {
+      background-color: #fdcb77;
+    }
+  }
+
+
+
+/* scroller */
+.scroll{
+    height: 180px; overflow-y: auto; overflow-x: hidden
+}
+
+.PhoneInputInput{
+    width: 440px;
+}
+
+@media screen and (max-width: 600px) {
+    
+
+    .PhoneInputInput{
+
+        width: 242px;
+    }
+    
+   
+}
+
+
+/* Modal body */
+.makeStyles-details-6 {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-body{
+  margin: auto;
+}
+
+.ResendOTP{
+  color:violet
+}
+
+.support{
+  margin: auto;
+}
