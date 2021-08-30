@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
 import KeyboardBackspaceTwoToneIcon from '@material-ui/icons/KeyboardBackspaceTwoTone';
 
@@ -6,9 +6,14 @@ import KeyboardBackspaceTwoToneIcon from '@material-ui/icons/KeyboardBackspaceTw
 
 const SecondStepManageStaff = ({ nextStep,prevStep, handleChange, values }) => {
 
+  console.log(" ==== SECOND STEP MANAGE STAFF ==== ")
+  console.log(values)
+
+
   // for continue event listener
   const Next = e => {
     e.preventDefault();
+
     nextStep();
   }
 
@@ -17,7 +22,6 @@ const SecondStepManageStaff = ({ nextStep,prevStep, handleChange, values }) => {
     prevStep();
   };
 
-  console.log(values);
   return (
 
 
@@ -28,7 +32,7 @@ const SecondStepManageStaff = ({ nextStep,prevStep, handleChange, values }) => {
 
       <center>
    
-        <AppBar style={{ background: "black", color: "#f4af0c" }} className='mt-3' position="sticky">
+        <AppBar style={{ background: "black", color: "#f4af0c" }} className='mt-3'>
           <Toolbar title="Enter User Details">
             <Typography color="inherit" variant="title">
               Do You Want To Manage Your Staff
@@ -40,7 +44,7 @@ const SecondStepManageStaff = ({ nextStep,prevStep, handleChange, values }) => {
             <input type="radio" id="No"
               onChange={handleChange('manageStaff')}
               defaultValue={values.manageStaff}
-              name="drone" value="No" />
+              name="drone" value="No" checked/>
             <label for="No">No</label>
           </div>
 

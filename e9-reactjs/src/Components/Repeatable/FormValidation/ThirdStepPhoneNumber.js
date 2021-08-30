@@ -10,11 +10,16 @@ import OtpField from "../Otp";
 
 
 const ThirdStepPhoneNumber = ({nextStep,prevStep, handleChange, values}) => {
-  const Continue = e => {
+  console.log(" ==== THIRD STEP PHONE NUMBER ==== ")
+  console.log(values)
+  
+  // Go to Next Step
+  const Next = e => {
     e.preventDefault();
     nextStep();
   }
-  const back = e => {
+  // Go to Previous
+  const Previous = e => {
     e.preventDefault();
     prevStep();
   };
@@ -26,20 +31,15 @@ const ThirdStepPhoneNumber = ({nextStep,prevStep, handleChange, values}) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
-  // const openModal = () => setState({ isOpen: true });
-  // const closeModal = () => setState({ isOpen: false });
-
 const  state = {
     isOpen: false
   };
 
-  const [phonenumber, setPhonenumber] = useState()
 
     return (
       <Fragment>
           <KeyboardBackspaceTwoToneIcon 
-          onClick={back}/>
+          onClick={Previous}/>
 
 
         {/* <PhoneNumber /> */}
@@ -113,7 +113,7 @@ const  state = {
                 padding: '0 30px',
               }}
               label="Submit"
-              onClick={Continue}
+              onClick={Next}
            
             > Next </Button>
             </center>

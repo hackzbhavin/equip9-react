@@ -6,10 +6,7 @@ import {
   Typography
 } from "@material-ui/core";
 import Axios from "axios";
-// import {
-//   isBrowser,
-//   isMobile
-// } from "react-device-detect";
+
 
 
 import { API } from '../../../Server';
@@ -29,11 +26,6 @@ const FirstStepSelectBusinessType = ({ nextStep, handleChange, values }) => {
   const [businessType, setBusinessType] = useState([])
 
 
-  // if (isBrowser) {
-
-  //   console.log("MOBILE");
-  // }
-
 
   useEffect(() => {
     Axios.get(`${API}get/BusinessType`).then((response) => {
@@ -50,9 +42,9 @@ const FirstStepSelectBusinessType = ({ nextStep, handleChange, values }) => {
 
 
     <Fragment>
-      <AppBar style={{ background: "black", color: "#f4af0c" }} position="top">
+      <AppBar style={{ background: "black", color: "#f4af0c" }} position="">
         <Toolbar title="Enter User Details">
-          <Typography color="inherit" variant="title">
+          <Typography variant="title">
             Choose Business Type
           </Typography>
         </Toolbar>

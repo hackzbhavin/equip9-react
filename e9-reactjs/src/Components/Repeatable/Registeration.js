@@ -66,9 +66,12 @@ export class UserForm extends Component {
 
   render() {
 const { step } = this.state;
+
 const { deviceType, businessType,manageStaff,taxNumber,companyName, phonenumber, password, firstName, lastName } = this.state;
 const values = {deviceType, businessType,manageStaff,taxNumber,companyName, phonenumber, password, firstName, lastName }
-
+if(values.manageStaff==""){
+  values.manageStaff="No"
+}
 
 if (isBrowser) {
 

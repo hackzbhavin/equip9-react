@@ -1,4 +1,4 @@
-import React, { Component, Fragment,useState } from "react";
+import React from "react";
 import clsx from 'clsx';
 
 import {
@@ -13,9 +13,8 @@ import {
   } from "@material-ui/core";
   import Visibility from '@material-ui/icons/Visibility';
   import VisibilityOff from '@material-ui/icons/VisibilityOff';
-  
-// import NameField from '../NameInput';
-// import PasswordInputField from '../PasswordInput';
+  import Axios from 'axios';
+  import { API } from '../../../Server';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -37,21 +36,15 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const FinalStepEquipmentOwner = ({nextStep,prevStep, handleChange, values}) => {
+const FinalStepEquipmentOwner = ({handleChange, values}) => {
+  console.log(" ==== FINAL STEP EQUIPMENT OWNER ==== ")
+  console.log(values)
+
   const [val, setVal] = React.useState({
 
     password: '',
     showPassword: false,
   });
-
-  const Continue = e => {
-    e.preventDefault();
-    nextStep();
-  }
-  const back = e => {
-    e.preventDefault();
-    prevStep();
-  };
 
   const classes = useStyles();
   
@@ -64,8 +57,27 @@ const FinalStepEquipmentOwner = ({nextStep,prevStep, handleChange, values}) => {
     event.preventDefault();
   };
 
+  const { deviceType, businessType, taxNumber, manageStaff, companyName, phonenumber, password, firstName, lastName } = values
 
+  const onSubmitPress = () => {
 
+    if (values.businessType == 2 ) {
+  
+  
+      Axios.post(`${API}post/EquipmentOwner`, {
+        businessTypeId: businessType,
+        deviceTypeId: deviceType,
+        phonenumber: phonenumber,
+        password: password,
+        taxNumber: taxNumber,
+        manageStaff: manageStaff,
+        companyName: companyName,
+        firstName: firstName,
+        lastName: lastName,
+      }
+      )
+    }
+  }
 
 
 return(
@@ -84,50 +96,35 @@ return(
         <br />
 
 
-        {(() => {
-            console.log(values);
-
-              if (values.manageStaff.toLowerCase === "no".toLowerCase){
-                  return (
-                    <TextField id="outlined-basic" 
-                    label="Enterprise Name" 
+        <TextField id="outlined-basic" 
+                    label="Company Name" 
                     variant="outlined" 
                     onChange={handleChange('companyName')}
                     defaultValue={values.companyName}
                     fullWidth
                     />
+
+        {(() => {
+            console.log(values);
+            console.log(values.manageStaff);
+
+              if (values.manageStaff === "Yes"){
+                  return (
+                    <div>
+
+          
+                    <TextField id="outlined-basic" 
+                    label="Tax Number - GSTIN" 
+                    variant="outlined" 
+                    onChange={handleChange('taxNumber')}
+                    defaultValue={values.taxNumber}
+                    placeholder=""
+                    className='mt-3'
+                    fullWidth
+                    />
+                    </div>
                   )
-              }else{
-                return(
-                  <div>
-
-                  
-                  <TextField id="outlined-basic" 
-                  label="Enterprise Name" 
-                  variant="outlined" 
-                  onChange={handleChange('taxNumber')}
-                  defaultValue={values.companyName}
-                  className='mt-3'
-                  fullWidth
-                  />
-
-                <TextField id="outlined-basic" 
-                  label="Tax Number - GSTIN" 
-                  variant="outlined" 
-                  onChange={handleChange('companyName')}
-                  defaultValue={values.companyName}
-                  placeholder=""
-                  className='mt-3'
-                  fullWidth
-                  />
-
-
-
-      
-                  </div>
-                )
-
-              }
+                  }
               
               return null;
             })()}
@@ -157,14 +154,7 @@ return(
       </div>
 
 
-      {/* <label class="mb-2 mt-3"><h6 class="mb-0 text-sm">Password</h6></label> 
-      <input 
-      class='mb-2 rounded'  
-      type="password" 
-      name="password" 
-      onChange={handleChange('password')}
-      defaultValue={values.password}
-      placeholder="Enter password"/>  */}
+
 
 <FormControl className={clsx(classes.margin, classes.textField), "mt-3"} variant="outlined" fullWidth>
           <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
@@ -205,9 +195,9 @@ return(
             height: 48,
             padding: '0 30px',            }}
           label="Continue"
-          onClick={Continue}
+          onClick={onSubmitPress}
         >
-          Next
+          Submit
         </Button>
         </div>
         </center>

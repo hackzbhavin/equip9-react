@@ -1,4 +1,4 @@
-import React, { Component, Fragment,useState } from "react";
+import React from "react";
 import {
     AppBar,
     Toolbar,
@@ -7,19 +7,36 @@ import {
     TextField,
     MuiThemeProvider
   } from "@material-ui/core";
+  import Axios from 'axios';
+  import { API } from '../../../Server';
 
-// import NameField from '../NameInput';
-// import PasswordInputField from '../PasswordInput';
 
-const FinalStepOperatorPartner = ({nextStep,prevStep, handleChange, values}) => {
-  const Continue = e => {
-    e.preventDefault();
-    nextStep();
-  }
+const FinalStepOperatorPartner = ({prevStep, handleChange, values}) => {
+  console.log(" ==== FINAL STEP PHONE NUMBER ==== ")
+  console.log(values)
+
+
   const back = e => {
     e.preventDefault();
     prevStep();
   };
+
+  const { deviceType, businessType,phonenumber, password, firstName, lastName } = values
+
+
+  const onSubmitPress = () => {
+    if (values.businessType == 5) {
+  
+      Axios.post(`${API}post/OperatorPartner`, {
+        businessTypeId: businessType, 
+        deviceTypeId: deviceType, 
+        phonenumber: phonenumber,
+        password: password,
+        firstName: firstName,
+        lastName: lastName,
+      })
+    }
+  }
 
 return(
 
@@ -30,7 +47,7 @@ return(
         <AppBar style={{ background: "black", color:"#f4af0c" }} position="sticky">
           <Toolbar title="Enter Personal Information">
             <Typography color="inherit" variant="title">
-                Equipment Owner
+                Operator Partner
             </Typography>
           </Toolbar>
         </AppBar>
@@ -84,9 +101,9 @@ return(
             height: 48,
             padding: '0 30px',            }}
           label="Continue"
-          onClick={Continue}
+          onClick={onSubmitPress}
         >
-          Next
+          Submit
         </Button>
         </div>
         </center>
