@@ -27,6 +27,21 @@ app.get("/api/get/BusinessType", (req, res) => {
     });
 });
 
+app.get("/api/get/ExisitingPhoneNumber/:phonenumber",(req,res)=>{
+
+    // const phonenumber = req.body.phonenumber
+    // const phonenumber = req.body.phonenumber
+
+    const checkPhoneNumberQuery ="SELECT MobileNumber FROM usercredential WHERE MobileNumber=?"
+    database.query(checkPhoneNumberQuery, [phonenumber], (err, result) => {
+        res.send(result);
+        if(result){
+            res.send("yes");
+        }
+    })
+
+})
+
 
 // for operator partner
 app.post("/api/post/OperatorPartner", (req, res) => {
@@ -151,7 +166,7 @@ app.post("/api/post/BusinessOwner", (req, res) => {
     });
 });
 
-// for Equipment Owner
+// for Equipment Owner id is 2
 app.post("/api/post/EquipmentOwner", (req, res) => {
     const businessTypeId = req.body.businessTypeId
     const deviceTypeId = req.body.deviceTypeId

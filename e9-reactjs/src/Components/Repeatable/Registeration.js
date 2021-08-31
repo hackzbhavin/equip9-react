@@ -64,6 +64,10 @@ export class UserForm extends Component {
     this.setState({ [input]: e.target.value });
   };
 
+
+
+
+  
   render() {
 const { step } = this.state;
 

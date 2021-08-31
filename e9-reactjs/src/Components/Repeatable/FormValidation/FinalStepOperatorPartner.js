@@ -1,10 +1,13 @@
-import React from "react";
+import React,{useState} from "react";
+import validator from 'validator'
+
 import {
     AppBar,
     Toolbar,
     Typography,
     Button,
     TextField,
+    FormHelperText,
     MuiThemeProvider
   } from "@material-ui/core";
   import Axios from 'axios';
@@ -12,7 +15,7 @@ import {
 
 
 const FinalStepOperatorPartner = ({prevStep, handleChange, values}) => {
-  console.log(" ==== FINAL STEP PHONE NUMBER ==== ")
+  console.log(" ==== FINAL STEP OPERATOR PARTNER ==== ")
   console.log(values)
 
 
@@ -25,6 +28,10 @@ const FinalStepOperatorPartner = ({prevStep, handleChange, values}) => {
 
 
   const onSubmitPress = () => {
+
+
+
+    
     if (values.businessType == 5) {
   
       Axios.post(`${API}post/OperatorPartner`, {
@@ -38,9 +45,23 @@ const FinalStepOperatorPartner = ({prevStep, handleChange, values}) => {
     }
   }
 
+  const [errorMessage, setErrorMessage] = useState('')
+  
+  const validate = (value) => {
+  
+    if (validator.isStrongPassword(value, {
+      minLength: 6
+    })) {
+      setErrorMessage('Your Password is Good to Go')
+    } else {
+      setErrorMessage('Password is Less Than 6 Characters')
+    }
+  }
+
+
 return(
 
-   
+
         <div className='mx-auto'>
   
   <MuiThemeProvider>
@@ -62,6 +83,7 @@ return(
        variant="outlined" 
        onChange={handleChange('firstName')}
        defaultValue={values.firstName}
+       required 
        />
       </div>
       <div class='col'>
@@ -70,6 +92,7 @@ return(
        variant="outlined" 
        onChange={handleChange('lastName')}
        defaultValue={values.lastName}
+       required 
        />
       </div>
       </div>
@@ -80,35 +103,56 @@ return(
       class='mb-2 rounded'  
       type="password" 
       name="password" 
+      onInput={(e) => validate(e.target.value)}
       onChange={handleChange('password')}
+minLength="6"
       defaultValue={values.password}
-      placeholder="Enter password"/> 
+      placeholder="Enter password"
+      
+      required
+      /> 
 
-
+<span style={{
+          fontWeight: 'bold',
+          color: 'red',
+        }}>{errorMessage}</span>
       </MuiThemeProvider> 
 
 <center>   
     <br />
         <br />
-        <div className=' mx-auto'>
-        <Button
-          style={{
-            background: 'linear-gradient(45deg, black 30%, black 90%)',
-            border: 0,
-            borderRadius: 3,
-            boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-            color: 'white',
-            height: 48,
-            padding: '0 30px',            }}
-          label="Continue"
-          onClick={onSubmitPress}
-        >
-          Submit
-        </Button>
-        </div>
+
+        {(() => {
+      
+
+              if (values.password !== "" && values.lastName !="" && values.firstName !=""){
+                  return (
+                    <div className=' mx-auto'>
+                    <Button
+                      style={{
+                        background: 'linear-gradient(45deg, black 30%, black 90%)',
+                        border: 0,
+                        borderRadius: 3,
+                        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+                        color: 'white',
+                        height: 48,
+                        padding: '0 30px',            }}
+                      label="Continue"
+                      onClick={onSubmitPress}
+                    >
+                      Submit
+                    </Button>
+                    </div>
+                  )
+                  }
+              
+              return null;
+            })()}
+
         </center>
 
         </div>
+  
     );
   
 }

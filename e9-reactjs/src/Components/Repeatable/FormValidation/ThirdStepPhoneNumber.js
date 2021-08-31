@@ -1,7 +1,10 @@
-import React, { Component, Fragment,useState } from "react";
-import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
+import React, { Component,useEffect, Fragment,useState } from "react";
+import { AppBar, Button, Toolbar,TextField, Typography } from "@material-ui/core";
 // import PhoneNumber from "../PhoneNumber";
 import PhoneInput from 'react-phone-number-input'
+  
+import Axios from 'axios';
+import { API } from '../../../Server';
 
 import KeyboardBackspaceTwoToneIcon from '@material-ui/icons/KeyboardBackspaceTwoTone';
 
@@ -31,11 +34,15 @@ const ThirdStepPhoneNumber = ({nextStep,prevStep, handleChange, values}) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-const  state = {
-    isOpen: false
-  };
 
 
+
+  const { phonenumber } = values
+
+ 
+
+    
+  
     return (
       <Fragment>
           <KeyboardBackspaceTwoToneIcon 
@@ -47,14 +54,21 @@ const  state = {
         <h6 class="mb-2 mt-4 text-sm">Phone Number</h6>
     <div class="input-group mb-3">
 
-      <input
-        placeholder="Example: 9991199911"
-        // value={value}
-        onChange={handleChange('phonenumber')}
-        defaultValue={values.phonenumber}
-        type='number'
-        class="rounded inputphonenumber"
+
+<TextField
+          id="outlined-number"
+          onInput={(e) => e.target.value = e.target.value.slice(0, 10)}
+          onChange={handleChange('phonenumber')}
+          defaultValue={values.phonenumber}
+          type="number"
+          fullWidth 
+          placeholder="9999911111"
+          variant="outlined"
+          
         />
+
+
+
     </div>
 
         <div class="row px-3 mb-4">
@@ -64,7 +78,15 @@ const  state = {
 
 
 
-        <Button
+
+
+
+        {(() => {
+ 
+
+              if (values.phonenumber.length == 10){
+                  return (
+                    <Button
           style={{
             marginTop:"20px",
             background: 'linear-gradient(45deg, black 30%, black 90%)',
@@ -76,10 +98,19 @@ const  state = {
             padding: '0 30px',
           }}
           label="Submit"
-          onClick={ handleShow}
+
+          
+          onClick={handleShow}
         >
           Submit
         </Button>
+                  )
+                  }
+              
+              return null;
+            })()}
+
+     
         </div>
 {/* Modal */}
 
@@ -98,10 +129,14 @@ const  state = {
         </AppBar>
         </Modal.Header>
         <Modal.Body> 
-          
+       
+       
+
+
           <OtpField />
           <center>
             <Button 
+            
               style={{
                 marginTop:"20px",
                 background: 'linear-gradient(45deg, black 30%, black 90%)',

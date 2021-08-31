@@ -32,7 +32,7 @@ const SecondStepManageStaff = ({ nextStep,prevStep, handleChange, values }) => {
 
       <center>
    
-        <AppBar style={{ background: "black", color: "#f4af0c" }} className='mt-3'>
+        <AppBar style={{ background: "black", color: "#f4af0c" }} className='mt-3' position="" >
           <Toolbar title="Enter User Details">
             <Typography color="inherit" variant="title">
               Do You Want To Manage Your Staff
