@@ -27,16 +27,26 @@ app.get("/api/get/BusinessType", (req, res) => {
     });
 });
 
+app.get("/api/get/CountryCode", (req, res) => {
+    const getBusinessTypeQuery = "SELECT * FROM country where IsActive=1"
+    database.query(getBusinessTypeQuery, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+
 app.get("/api/get/ExisitingPhoneNumber/:phonenumber",(req,res)=>{
 
+    const phonenumber = req.params.phonenumber
     // const phonenumber = req.body.phonenumber
-    // const phonenumber = req.body.phonenumber
+    console.log(phonenumber);
 
     const checkPhoneNumberQuery ="SELECT MobileNumber FROM usercredential WHERE MobileNumber=?"
-    database.query(checkPhoneNumberQuery, [phonenumber], (err, result) => {
+    database.query(checkPhoneNumberQuery, phonenumber, (err, result) => {
         res.send(result);
         if(result){
-            res.send("yes");
+            console.log("yes");
         }
     })
 

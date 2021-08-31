@@ -2,7 +2,14 @@ import React, { Component,useEffect, Fragment,useState } from "react";
 import { AppBar, Button, Toolbar,TextField, Typography } from "@material-ui/core";
 // import PhoneNumber from "../PhoneNumber";
 import PhoneInput from 'react-phone-number-input'
-  
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
+
 import Axios from 'axios';
 import { API } from '../../../Server';
 
@@ -27,7 +34,17 @@ const ThirdStepPhoneNumber = ({nextStep,prevStep, handleChange, values}) => {
     prevStep();
   };
 
-  
+  const useStyles = makeStyles((theme) => ({
+    formControl: {
+      margin: theme.spacing(3),
+      minWidth: 220,
+      display:"inline"
+    },
+    selectEmpty: {
+      width:100,
+      marginTop: theme.spacing(),
+    },
+  }));
 
   const [show, setShow] = useState(false);
 
@@ -38,10 +55,34 @@ const ThirdStepPhoneNumber = ({nextStep,prevStep, handleChange, values}) => {
 
 
   const { phonenumber } = values
+  const classes = useStyles();
 
  
 
-    
+  const [countryCode, setCountryCode] = useState([])
+  const [numberExist, setNumberExist] = useState([])
+
+
+
+  useEffect(() => {
+    Axios.get(`${API}get/CountryCode`).then((response) => {
+      // console.log(response.data);
+      setCountryCode(response.data);
+    })
+
+
+
+  },[])
+
+  
+  useEffect(() => {
+  Axios.get(`${API}get/ExisitingPhoneNumber/${values.phonenumber}`).then((resp)=>{
+    console.log(resp.data);
+    setNumberExist(resp.data)
+  })
+  },[])
+
+
   
     return (
       <Fragment>
@@ -52,20 +93,40 @@ const ThirdStepPhoneNumber = ({nextStep,prevStep, handleChange, values}) => {
         {/* <PhoneNumber /> */}
 
         <h6 class="mb-2 mt-4 text-sm">Phone Number</h6>
-    <div class="input-group mb-3">
-
-
-<TextField
+    <div class="input-group mb-3 ">
+    <FormControl variant="outlined" className={classes.formControl} display="inline">
+        <InputLabel id="demo-simple-select-outlined-label">Code</InputLabel>
+        <Select
+        style={ {width:80}}
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select-outlined"
+          onChange={handleChange}
+          label=""
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {countryCode.map((c)=>{
+            return(
+            <MenuItem value={c.CountryIsdCode}>{c.CountryIsdCode}</MenuItem>
+            )
+          })}
+          
+        </Select>
+        <TextField
           id="outlined-number"
           onInput={(e) => e.target.value = e.target.value.slice(0, 10)}
           onChange={handleChange('phonenumber')}
           defaultValue={values.phonenumber}
           type="number"
-          fullWidth 
+          // fullWidth 
           placeholder="9999911111"
           variant="outlined"
           
         />
+
+      </FormControl>
+
 
 
 
@@ -130,7 +191,15 @@ const ThirdStepPhoneNumber = ({nextStep,prevStep, handleChange, values}) => {
         </Modal.Header>
         <Modal.Body> 
        
-       
+    { numberExist.map((val)=>{
+
+      return (
+      
+          <h4>Sorry Number Already Exist</h4>
+      )
+      }
+    )}
+    
 
 
           <OtpField />
